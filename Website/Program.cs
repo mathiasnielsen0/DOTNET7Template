@@ -1,4 +1,6 @@
+using Authentication;
 using DatabaseAccess.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
@@ -7,8 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DbContextConnection") ?? throw new InvalidOperationException("Connection string 'DbContextConnection' not found.");
 
 builder.Services.AddDbContext<DbContext>(options => options.UseSqlServer(connectionString));
-
-builder.Services.AddDefaultIdentity<Bruger>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<DbContext>();
+builder.Services.AddTransient<AuthenticationHelper>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.AccessDeniedPath = "/Forbidden/";
+    });
 
 // Add services to the container.
 // var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
@@ -35,6 +43,13 @@ else
     app.UseHsts();
 }
 
+var cookiePolicyOptions = new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+};
+
+
+app.UseCookiePolicy(cookiePolicyOptions);
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

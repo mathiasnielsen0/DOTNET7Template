@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccess", "DatabaseA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbUp", "DbUp\DbUp.csproj", "{F561174D-B4E9-4FAB-87A4-D3C84801C62A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "Authentication\Authentication.csproj", "{D1F2ACFF-2203-4B0C-80B9-FF8F578EE9C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{F561174D-B4E9-4FAB-87A4-D3C84801C62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F561174D-B4E9-4FAB-87A4-D3C84801C62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F561174D-B4E9-4FAB-87A4-D3C84801C62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1F2ACFF-2203-4B0C-80B9-FF8F578EE9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1F2ACFF-2203-4B0C-80B9-FF8F578EE9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1F2ACFF-2203-4B0C-80B9-FF8F578EE9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1F2ACFF-2203-4B0C-80B9-FF8F578EE9C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
