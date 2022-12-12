@@ -12,11 +12,11 @@ namespace Website.Controllers;
 [Authorize]
 public class AccountController : BaseController
 {
-    private readonly AuthenticationHelper _authenticationHelper;
+    private readonly UserControllerActionHandler _actionHandler;
 
-    public AccountController(AuthenticationHelper authenticationHelper)
+    public AccountController(UserControllerActionHandler actionHandler)
     {
-        _authenticationHelper = authenticationHelper;
+        _actionHandler = actionHandler;
     }
 
     public async Task<IActionResult> Register()
@@ -92,8 +92,7 @@ public class AccountController : BaseController
                 // redirect response value.
             };
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity),
                 authProperties);
 
             // _logger.LogInformation("User {Email} logged in at {Time}.",
