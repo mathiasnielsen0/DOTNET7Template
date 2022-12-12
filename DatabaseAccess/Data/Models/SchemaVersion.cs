@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DatabaseAccess.Data.Models;
+namespace Website;
 
 public partial class SchemaVersion
 {

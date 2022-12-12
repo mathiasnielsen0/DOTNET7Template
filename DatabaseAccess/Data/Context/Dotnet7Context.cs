@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DatabaseAccess.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatabaseAccess.Data.Context;
+namespace Website;
 
 public partial class Dotnet7Context : DbContext
 {
@@ -21,8 +20,7 @@ public partial class Dotnet7Context : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;Database=dotnet7;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DbContextConnection");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

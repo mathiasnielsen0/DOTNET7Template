@@ -32,8 +32,4 @@
       <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Areas" />
-    </ItemGroup>
-
 </Project>
