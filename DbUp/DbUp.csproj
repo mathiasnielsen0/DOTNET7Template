@@ -12,4 +12,9 @@
       <PackageReference Include="dbup-sqlserver" Version="5.0.8" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Scripts\Script0001 - Create User.sql" />
+      <EmbeddedResource Include="Scripts\Script0001 - Create User.sql" />
+    </ItemGroup>
+
 </Project>

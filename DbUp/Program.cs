@@ -3,7 +3,7 @@ using DbUp;
 
 var connectionString =
     args.FirstOrDefault()
-    ?? "Server=.;Database=dotnet7;Trusted_Connection=True;MultipleActiveResultSets=true";
+    ?? "Server=.;Database=dotnet7;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
 
 var upgrader =
     DeployChanges.To

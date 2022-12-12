@@ -1,0 +1,7 @@
+﻿1. Indsæt følgende kommando i powershell/bash: for at installere dotnet tool  "dotnet tool install --global dotnet-ef"
+2. Find connection string fra appsettings.json og kør følgende kommando:
+   dotnet user-secrets set ConnectionStrings:DbContextConnection "INDSÆT_CONNECTION_STRING_HER_MED_APOSTROFER"
+
+Indsæt dette i powershell i DatabaseAccess folderen for at generere filer
+
+dotnet ef dbcontext scaffold Name=ConnectionStrings:DbContextConnection Microsoft.EntityFrameworkCore.SqlServer --context Dotnet7Context --context-dir Data/Context --output-dir Data/Models --force

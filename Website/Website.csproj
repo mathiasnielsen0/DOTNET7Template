@@ -23,6 +23,7 @@
       <ProjectReference Include="..\Authentication\Authentication.csproj" />
       <ProjectReference Include="..\Core\Core.csproj" />
       <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj" />
+      <ProjectReference Include="..\Website.Application\Website.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
