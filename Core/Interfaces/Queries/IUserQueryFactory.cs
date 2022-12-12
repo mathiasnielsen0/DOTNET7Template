@@ -1,4 +1,4 @@
-﻿namespace Core.Queries;
+﻿namespace Core.Interfaces.Queries;
 
 public interface IUserQueryFactory
 {

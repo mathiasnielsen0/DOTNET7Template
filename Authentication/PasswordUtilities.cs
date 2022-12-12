@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using Core.Interfaces;
 using Core.Models;
+using Core.Models.Password;
 
 namespace Authentication
 {

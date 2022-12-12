@@ -1,6 +1,6 @@
-﻿namespace Core.Repositories;
+﻿namespace Core.Interfaces.Repositories;
 
 public interface IUserRepository
 {
-    void CreateUser(string email);
+    void CreateUser(string email, string password);
 }

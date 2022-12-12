@@ -1,4 +1,4 @@
-﻿using Core.Repositories;
+﻿using Core.Interfaces.Repositories;
 using Website;
 
 namespace DatabaseAccess.Repositories;
@@ -12,7 +12,7 @@ public class UserRepository : IUserRepository
         _database = database;
     }
     
-    public void CreateUser(string email)
+    public void CreateUser(string email, string password)
     {
         
     }
