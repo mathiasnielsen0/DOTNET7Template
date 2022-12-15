@@ -1,3 +1,4 @@
+using DatabaseAccess.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Website;
@@ -5,7 +6,7 @@ using Website;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DbContextConnection") ?? throw new InvalidOperationException("Connection string 'DbContextConnection' not found.");
 
-builder.Services.AddDbContext<Dotnet7Context>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DbContextConnection>(options => options.UseSqlServer(connectionString));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

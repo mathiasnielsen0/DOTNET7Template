@@ -1,13 +1,13 @@
 ﻿using Core.Interfaces.Repositories;
-using Website;
+using DatabaseAccess.Data;
 
 namespace DatabaseAccess.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly Dotnet7Context _database;
+    private readonly DbContextConnection _database;
+    public UserRepository(DbContextConnection database)
 
-    public UserRepository(Dotnet7Context database)
     {
         _database = database;
     }
