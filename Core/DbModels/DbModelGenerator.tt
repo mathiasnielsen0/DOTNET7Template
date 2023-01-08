@@ -294,15 +294,11 @@
 
         if(table.Columns.Any(x => x.NameHumanCase == "CreatedAt"))
         {
-            interfaceNames.Add("Core.Interfaces.Data.ICreatedAtAuditable");
-        }
-        if(table.Columns.Any(x => x.NameHumanCase == "LastChangedAt"))
-        {
-            interfaceNames.Add("Core.Interfaces.Data.ILastChangedAtAuditable");
+            interfaceNames.Add("Core.Infrastucture.IAuditable");
         }
         if(table.Columns.Any(x => x.NameHumanCase == "ID"))
         {
-            interfaceNames.Add("Core.Interfaces.Data.IIdentifiable");
+            interfaceNames.Add("Core.Infrastucture.IIdentifiable");
         }
 
         if(interfaceNames.Any())
