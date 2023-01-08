@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Core.Extensions;
 using Core.Interfaces;
+using Core.Models.User;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -59,32 +60,27 @@ public class UserController : BaseController
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Email),
-            new Claim("FullName", user.Name),
+            new Claim(Claims.UserName, user.Name),
+            new Claim(Claims.UserID, user.Id.ToString()),
+            new Claim(Claims.UserEmail, user.Email),
         };
         
         if (user.Administrator)
-            claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+            claims.Add(new Claim(Claims.Administrator, "Administrator"));
 
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
         var authProperties = new AuthenticationProperties
         {
-            //AllowRefresh = <bool>,
-            // Refreshing the authentication session should be allowed.
-
-            //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-            // The time at which the authentication ticket expires. A 
-            // value set here overrides the ExpireTimeSpan option of 
-            // CookieAuthenticationOptions set with AddCookie.
-
-            //IsPersistent = true,
+            AllowRefresh = true,
+            ExpiresUtc = DateTimeOffset.UtcNow.AddMonths(6),
+            IsPersistent = true,
             // Whether the authentication session is persisted across 
             // multiple requests. When used with cookies, controls
             // whether the cookie's lifetime is absolute (matching the
             // lifetime of the authentication ticket) or session-based.
 
-            //IssuedUtc = <DateTimeOffset>,
+            IssuedUtc = DateTimeOffset.Now,
             // The time at which the authentication ticket was issued.
 
             //RedirectUri = <string>
