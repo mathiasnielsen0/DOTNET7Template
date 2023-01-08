@@ -33,7 +33,6 @@ namespace Authentication
         {
             var salt = GenerateSalt();
 
-            //TODO FIND ANDEN KRYPTERINGSALGORITME
             using (var deriveBytes = new Rfc2898DeriveBytes(password, salt, 720000))
             {
                 var hashedPassword = deriveBytes.GetBytes(PasswordLength);

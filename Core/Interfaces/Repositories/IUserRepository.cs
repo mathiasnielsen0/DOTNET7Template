@@ -1,4 +1,6 @@
-﻿namespace Core.Interfaces.Repositories;
+﻿using Core.Models.User;
+
+namespace Core.Interfaces.Repositories;
 
 public interface IUserRepository
 {

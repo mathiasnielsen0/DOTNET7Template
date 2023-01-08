@@ -5,8 +5,8 @@ namespace DatabaseAccess.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly DbContextConnection _database;
-    public UserRepository(DbContextConnection database)
+    private readonly WriteContext _database;
+    public UserRepository(WriteContext database)
 
     {
         _database = database;

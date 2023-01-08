@@ -1,12 +1,22 @@
+using Authentication;
+using Core.Interfaces;
+using Core.Interfaces.Queries;
+using Core.Interfaces.Repositories;
 using DatabaseAccess.Data;
+using DatabaseAccess.Queries;
+using DatabaseAccess.Repositories;
+using DomainModel.Infrastructure;
+using Mapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Website;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DbContextConnection") ?? throw new InvalidOperationException("Connection string 'DbContextConnection' not found.");
 
-builder.Services.AddDbContext<DbContextConnection>(options => options.UseSqlServer(connectionString));
+
+
+// Add services to the container.
+builder.Services.AddDbContext<WriteContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -15,16 +25,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Forbidden/";
     });
 
-// Add services to the container.
-// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-//                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-//
-// builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IPasswordUtilities, PasswordUtilities>();
+builder.Services.AddScoped<IUserQueryFactory, UserQueryFactory>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+builder.Services.AddScoped<IMapper, CustomMapper>();
 
 var app = builder.Build();
 
